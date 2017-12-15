@@ -19,3 +19,12 @@ dffeb <- df[(df$Date=="2007-02-01") | (df$Date=="2007-02-02"),]
 dffeb <- transform(dffeb, timestamp=as.POSIXct(paste(Date, Time)), "%d/%m/%Y %H:%M:%S")
 
 
+
+
+# First plot: Global Active Power & Frequency
+plot1 <- function() {
+  hist(dffeb$Global_active_power, main = paste("Global Active Power"), col="red", xlab="Global Active Power (kilowatts)")
+  dev.copy(png, file="plot1.png", width=480, height=480)
+  dev.off()
+  cat("Plot1.png has been saved in", getwd())
+}
