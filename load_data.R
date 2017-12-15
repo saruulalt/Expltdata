@@ -9,11 +9,13 @@ df <- read.table(filename,
                  na="?")
 
 
-# convert date and time variables to Date/Time class
+#converting date and time variables to Date/Time class
 df$Date <- as.Date(df$Date, "%d/%m/%Y")
 
-# only use data from the dates 2007-02-01 and 2007-02-02
+#making sure to only use data from the dates 2007-02-01 and 2007-02-02
 dffeb <- df[(df$Date=="2007-02-01") | (df$Date=="2007-02-02"),]
 
-#create timestamp
+#creating a new column as timestamp
 dffeb <- transform(dffeb, timestamp=as.POSIXct(paste(Date, Time)), "%d/%m/%Y %H:%M:%S")
+
+
