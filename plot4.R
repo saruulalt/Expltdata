@@ -1,4 +1,3 @@
-
 #load file
 # 
 # filename <- "household_power_consumption.txt"
@@ -18,37 +17,6 @@
 # #creating a new column as timestamp
 # dffeb <- transform(dffeb, timestamp=as.POSIXct(paste(Date, Time)), "%d/%m/%Y %H:%M:%S")
 
-
-
-
-# First plot: Global Active Power & Frequency
-plot1 <- function() {
-  hist(dffeb$Global_active_power, main = paste("Global Active Power"), col="red", xlab="Global Active Power (kilowatts)")
-  dev.copy(png, file="plot1.png", width=480, height=480)
-  dev.off()
-  cat("Plot1.png has been saved in", getwd())
-}
-
-
-#Second plot: Global Active Power & Date
-plot2 <- function() {
-  plot(dffeb$timestamp,dffeb$Global_active_power, type="l", xlab="", ylab="Global Active Power (kilowatts)")
-  dev.copy(png, file="plot2.png", width=480, height=480)
-  dev.off()
-  cat("plot2.png has been saved in", getwd())
-}
-
-
-#Energy sub metering
-plot3 <- function() {
-  plot(dffeb$timestamp,dffeb$Sub_metering_1, type="l", xlab="", ylab="Energy sub metering")
-  lines(dffeb$timestamp,dffeb$Sub_metering_2,col="red")
-  lines(dffeb$timestamp,dffeb$Sub_metering_3,col="blue")
-  legend("topright", col=c("black","red","blue"), c("Sub_metering_1  ","Sub_metering_2  ", "Sub_metering_3  "),lty=c(1,1), lwd=c(1,1))
-  dev.copy(png, file="plot3.png", width=480, height=480)
-  dev.off()
-  cat("plot3.png has been saved in", getwd())
-}
 
 
 
